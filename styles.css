@@ -96,7 +96,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 2rem;
+    padding: 1rem 2rem;
     position: relative;
 }
 
@@ -104,7 +104,7 @@ main {
     display: flex;
     align-items: center;
     gap: 1rem;
-    z-index: 11;
+    z-index: 1001; /* Above mobile nav */
 }
 
 .logo-img {
@@ -119,10 +119,11 @@ main {
     color: var(--text-color);
 }
 
+/* Desktop Navigation */
 .nav-links {
     display: flex;
     gap: 2rem;
-    margin: 0 2rem;
+    align-items: center;
 }
 
 .nav-link {
@@ -146,6 +147,7 @@ main {
 .auth-buttons {
     display: flex;
     gap: 1rem;
+    align-items: center;
 }
 
 .login-btn,
@@ -179,18 +181,99 @@ main {
     transform: translateY(-2px);
 }
 
-.mobile-menu-btn {
+/* Hamburger Menu */
+.hamburger-menu {
     display: none;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
-    height: 21px;
-    background: transparent;
-    border: none;
+    height: 22px;
     cursor: pointer;
+    z-index: 1001; /* Above mobile nav */
     padding: 0;
-    z-index: 11;
-    margin-left: auto;
+    background: none;
+    border: none;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-color);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav-links {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.mobile-nav .nav-link {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 1rem;
+    width: 80%;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.mobile-nav .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.mobile-auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 80%;
+    margin-top: 2rem;
+}
+
+.mobile-auth-buttons .login-btn,
+.mobile-auth-buttons .register-btn {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger Animation */
+.hamburger-menu.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
 }
 
 /* Hero Section */
@@ -404,7 +487,7 @@ main {
     padding: 1rem 2rem;
     background: var(--primary-color);
     color: white;
-    text-decoration: none;
+    border: none;
     border-radius: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -594,9 +677,8 @@ main {
         padding: 1rem;
     }
 
-    .mobile-menu-btn {
+    .hamburger-menu {
         display: flex;
-        margin-left: 1rem;
     }
 
     .nav-links, .auth-buttons {
@@ -612,100 +694,10 @@ main {
         align-items: center;
         gap: 1rem;
         border-top: 1px solid var(--glass-border);
-        z-index: 10;
     }
 
     .nav-links.active, .auth-buttons.active {
         display: flex;
-    }
-
-    .nav-links {
-        order: 2;
-    }
-
-    .auth-buttons {
-        order: 3;
-    }
-
-    .nav-link {
-        width: 100%;
-        text-align: center;
-        padding: 0.75rem;
-        border-radius: 8px;
-        transition: background-color 0.3s ease;
-    }
-
-    .nav-link:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .auth-buttons {
-        flex-direction: column;
-        width: 100%;
-        gap: 0.5rem;
-    }
-
-    .auth-buttons a {
-        width: 100%;
-        text-align: center;
-        padding: 0.75rem;
-    }
-
-    .header.glass {
-        background: var(--glass-bg);
-        backdrop-filter: blur(10px);
-    }
-
-    .hero {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem;
-        min-height: auto;
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-
-    .features-grid, .services-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .social-links {
-        justify-content: center;
-    }
-
-    .mobile-menu-btn {
-        display: flex;
-    }
-
-    .nav-links,
-    .auth-buttons {
-        display: none;
-    }
-
-    .nav-links.active,
-    .auth-buttons.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--glass-bg);
-        backdrop-filter: blur(10px);
-        padding: 1rem;
-        gap: 1rem;
-        border-top: 1px solid var(--glass-border);
     }
 
     .nav-link {
@@ -1182,39 +1174,6 @@ main {
     color: var(--text-muted);
 }
 
-.mobile-menu-btn {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 10;
-}
-
-.mobile-menu-btn span {
-    width: 100%;
-    height: 3px;
-    background-color: var(--text-color);
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
-
-.mobile-menu-btn.active span:first-child {
-    transform: translateY(9px) rotate(45deg);
-}
-
-.mobile-menu-btn.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.mobile-menu-btn.active span:last-child {
-    transform: translateY(-9px) rotate(-45deg);
-}
-
 @media screen and (max-width: 768px) {
     .mobile-menu-btn {
         display: flex;
@@ -1257,5 +1216,29 @@ main {
     .auth-buttons a {
         width: 100%;
         text-align: center;
+    }
+
+    .floating-cards {
+        display: none;
+    }
+
+    .trust-badges {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .mobile-nav {
+        display: block;
     }
 }
