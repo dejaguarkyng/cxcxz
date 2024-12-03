@@ -1,0 +1,303 @@
+:root {
+    --bg-color: #1a1b2e;
+    --card-bg: #242538;
+    --primary-color: #6c63ff;
+    --accent-color: #00d4ff;
+    --text-color: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: rgba(0, 0, 0, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 1rem;
+    display: flex;
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px var(--glass-shadow);
+    border: 1px solid var(--glass-border);
+    animation: pageEnter 0.6s ease-out;
+}
+
+@keyframes pageEnter {
+    0% {
+        opacity: 0;
+        transform: scale(0.9) rotate3d(1, 1, 0, -30deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate3d(1, 1, 0, 0deg);
+    }
+}
+
+.page-exit {
+    animation: pageExit 0.6s ease-in forwards;
+}
+
+@keyframes pageExit {
+    0% {
+        opacity: 1;
+        transform: scale(1) rotate3d(1, 1, 0, 0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.9) rotate3d(1, 1, 0, 30deg);
+    }
+}
+
+.leftContent {
+    flex: 1;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+.welcomeText {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.rightContent {
+    flex: 1;
+    padding: 2.5rem;
+    background: var(--card-bg);
+}
+
+.formBox {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.boxHeader {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.personIcon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.personIcon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.signIn {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.inputField {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.inputField input {
+    width: 100%;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--glass-bg);
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+.inputField input::placeholder {
+    color: var(--text-muted);
+}
+
+.inputField i {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+#message {
+    color: #ff4d4d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.loginButton {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.loginButton:hover {
+    background: var(--accent-color);
+}
+
+.forgotpass {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.forgotpass a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.forgotpass a:hover {
+    color: var(--accent-color);
+}
+
+.signup-link {
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: rgba(108, 99, 255, 0.1);
+    transition: background 0.4s;
+}
+
+.signup-link:hover {
+    background: rgba(108, 99, 255, 0.2);
+}
+
+.signup-link span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.signup-link:hover span {
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        max-width: 400px;
+    }
+
+    .leftContent {
+        padding: 2rem 1.5rem;
+    }
+
+    .rightContent {
+        padding: 2rem 1.5rem;
+    }
+
+    .logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .welcomeText {
+        font-size: 1.25rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .formBox {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin: 0.5rem;
+    }
+
+    .leftContent {
+        padding: 1.5rem 1rem;
+    }
+
+    .rightContent {
+        padding: 1.5rem 1rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .welcomeText {
+        font-size: 1.1rem;
+    }
+
+    .subtitle {
+        font-size: 0.85rem;
+    }
+
+    .personIcon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .signIn {
+        font-size: 1.25rem;
+    }
+}

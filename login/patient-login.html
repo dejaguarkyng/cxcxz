@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meditech Patient Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../shared/loading-modal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="icon" href="../meditech logo.jpeg" />
+</head>
+<body>
+    <div class="container">
+        <div class="leftContent">
+            <div class="welcomeText">Welcome back to</div>
+            <div class="title">Meditech Healthcare</div>
+            <div class="subtitle">Your trusted partner in digital healthcare solutions</div>
+            <img src="../meditech logo.jpeg" class="logo" alt="Meditech Logo" />
+        </div>
+        <div class="rightContent">
+            <div class="formBox">
+                <div class="boxHeader">
+                    <div class="personIcon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="signIn">Patient Portal</div>
+                </div>
+                <form id="patient-form">
+                    <div class="inputField">
+                        <input type="email" id="email" placeholder="Email" required>
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="inputField">
+                        <input type="password" placeholder="Enter your password" id="password" required />
+                        <i class="far fa-eye-slash" id="hide" onclick="showPas()"></i>
+                    </div>
+                    <div id="message"></div>
+                    <button type="button" class="loginButton" id="loginButton">
+                        <span>Sign In to Your Account</span>
+                    </button>
+                </form>
+                <div class="forgotpass">
+                    <a href="#">Forgot your password?</a>
+                </div>
+                <div class="forgotpass">
+                    <a href="../sign up page/createAccount.html" class="signup-link">
+                        <span>Don't have an account? Sign up</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../shared/auth.js"></script>
+    <script src="../shared/loading-modal.js"></script>
+    <script src="patient-login.js"></script>
+    <script src="page-transition.js"></script>
+</body>
+</html>
